@@ -14,13 +14,15 @@
         [SerializeField] float ScrewTime = 10;
         [SerializeField] float ScrewRotSpeed = 180;
 
+        [SerializeField] Instructions InstructionsRef;
 
         float ScrewFinalPos;
         float ScrewStartPos;
         Vector3 pos;
         float timeElapsed = 0;
+        bool ScrewAllTheWay=false;
 
-
+        
 
         private GameObject objectRef;
         //public GameObject DrillRef;
@@ -39,7 +41,7 @@
 
 
         }
-        public void ScrewMovement()
+        public void ScrewMovement() //changes the screw position and rotation
         {
 
             if (timeElapsed < ScrewTime)
@@ -50,6 +52,11 @@
                 transform.position = new Vector3(pos.x, NewY, pos.z);
                 transform.Rotate(new Vector3(0f, ScrewRotSpeed, 0f), Space.Self);
                 timeElapsed += Time.deltaTime;
+            }
+            else
+            {
+                ScrewAllTheWay = true;
+                InstructionsRef.SetInstruction(5);
             }
         }
         /*private void OnMouseDown()
