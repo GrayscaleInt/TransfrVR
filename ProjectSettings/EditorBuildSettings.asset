@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Menu/MainMenu.unity
+    guid: 60f753e81a884804b889035addcdc66c
+  - enabled: 1
     path: Assets/Scenes/PlantSafety_Workshop.unity
     guid: 5f712ad684287db449bbd0aaa3aa08a3
   m_configObjects: {}
