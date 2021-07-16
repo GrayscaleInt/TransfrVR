@@ -13,6 +13,7 @@
 
         [SerializeField] float ScrewTime = 10;
         [SerializeField] float ScrewRotSpeed = 180;
+        [SerializeField] float WoodThickness=0.03f; 
         [SerializeField] AudioClip ScrewDrilling;
         [SerializeField] AudioClip ScrewStops;
 
@@ -31,9 +32,6 @@
         private GameObject objectRef;
         AudioSource AudioScrew; 
 
-       
- 
-
 
         private void Start()
         {
@@ -42,8 +40,8 @@
             objectRef = this.gameObject;
             pos = objectRef.transform.position;
             ScrewStartPos = transform.position.y;
-            ScrewFinalPos = ScrewStartPos - 0.1f;
-            print(ScrewStartPos);
+            ScrewFinalPos = ScrewStartPos - WoodThickness;
+           
             AudioScrew = this.GetComponent<AudioSource>(); 
 
         }

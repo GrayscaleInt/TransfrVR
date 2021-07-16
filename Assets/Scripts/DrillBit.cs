@@ -15,6 +15,10 @@
             {
                 ScrewRef.ScrewMovement();
             }
+            if (DrillRef.IsOn == false)
+            {
+                ScrewRef.SetScrewAudio(0); // stops screw audio
+            }
            
 
         }

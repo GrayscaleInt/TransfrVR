@@ -7,14 +7,28 @@ public class Instructions : MonoBehaviour
 {
     Text InstructionText;
     [SerializeField] int Step;
-    private AudioSource AudioInstructions; 
+    [SerializeField] AudioClip Next;
+    [SerializeField] AudioClip End; 
+    private AudioSource AudioInstructions;
+    Button3D[] Buttons3D = new Button3D[2];
+
 
     private void Start()
     {
         AudioInstructions = this.GetComponent<AudioSource>();
         InstructionText = this.GetComponent<Text>();
         SetInstruction(Step);
-        
+
+       // find 3d buttons an disable them 
+        Buttons3D = FindObjectsOfType<Button3D>();
+        Debug.Log(Buttons3D.Length);
+
+        for (int i = 0; i < Buttons3D.Length; i++)
+        {
+            Buttons3D[i].gameObject.SetActive(false);
+        }
+
+
 
     }
     public void SetInstruction(int step)
@@ -28,22 +42,28 @@ public class Instructions : MonoBehaviour
 
             case 2:
                 InstructionText.text = "With the other hand, grab the hose.";
-                AudioInstructions.Play();  // play instruction's beep 
+                AudioInstructions.PlayOneShot(Next);  // play instruction's beep 
                 break;
 
             case 3:
                 InstructionText.text = "Connect the hose to the drill.";
-                AudioInstructions.Play();  // play instruction's beep 
+                AudioInstructions.PlayOneShot(Next);  // play instruction's beep 
                 break;
 
             case 4:
                 InstructionText.text = "Drill the screw in front of you, all the way.";
-                AudioInstructions.Play();  // play instruction's beep 
+                AudioInstructions.PlayOneShot(Next);  // play instruction's beep 
                 break;
 
             case 5:
                 InstructionText.text = "Awesome, you are done.";
-                AudioInstructions.Play();  // play instruction's beep 
+                AudioInstructions.PlayOneShot(End);   // play instruction's beep 
+               
+                // enable 3D buttons 
+                for(int i=0;i<Buttons3D.Length ; i++ )
+                {
+                    Buttons3D[i].gameObject.SetActive(true);
+                }
                 break;
         }
     }

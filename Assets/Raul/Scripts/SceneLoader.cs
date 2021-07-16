@@ -26,7 +26,7 @@ public class SceneLoader : MonoBehaviour
             if (SceneManager.GetActiveScene().name == "MainMenu") { return; }
         }
         SceneManager.LoadScene(currentSceneIndex + sceneIndexToLoad);
-        SceneManager.UnloadSceneAsync("MainMenu");
+      SceneManager.UnloadSceneAsync("MainMenu");
     }
 
     public void LoadMainMenu()
